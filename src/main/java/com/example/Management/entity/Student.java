@@ -8,21 +8,21 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 
-@Data
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDate;
+
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String studentName;
-    private String address;
-    private String phone;
-    private String role;
+    private String fullName;
     private String email;
-    private String course;
-    private Long amount;
+    private String phoneNumber;
+    private LocalDate registrationDate;
 }
