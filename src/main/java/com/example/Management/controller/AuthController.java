@@ -40,6 +40,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody AuthRequestDTO request) {
+
+        System.out.println("aa gya mai");
         // Authenticate user
         authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
