@@ -19,8 +19,8 @@ import java.time.LocalDate;
 @Builder
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
+
     private String fullName;
     private String email;
     private String phoneNumber;
