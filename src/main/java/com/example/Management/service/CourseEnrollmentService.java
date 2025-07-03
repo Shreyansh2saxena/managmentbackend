@@ -17,8 +17,8 @@ public class CourseEnrollmentService {
     private final StudentRepository studentRepository;
 
     public CourseEnrollment createEnrollment(CourseEnrollment enrollment) {
-        Long studentId = enrollment.getStudent().getId();
-        Student student = studentRepository.findById(studentId)
+        String studentId = enrollment.getStudent().getId();
+        Student student = (Student) studentRepository.findById(studentId)
                 .orElseThrow(() -> new RuntimeException("Student not found with id " + studentId));
         enrollment.setStudent(student);
         return enrollmentRepository.save(enrollment);
@@ -33,7 +33,7 @@ public class CourseEnrollmentService {
                 .orElseThrow(() -> new RuntimeException("Enrollment not found with id " + id));
     }
 
-    public List<CourseEnrollment> getEnrollmentsByStudentId(Long studentId) {
+    public List<CourseEnrollment> getEnrollmentsByStudentId(String studentId) {
         return enrollmentRepository.findByStudentId(studentId);
     }
 

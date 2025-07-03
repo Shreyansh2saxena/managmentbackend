@@ -10,10 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/enrollments")
-@RequiredArgsConstructor
 public class CourseEnrollmentController {
 
     private final CourseEnrollmentService enrollmentService;
+
+    public CourseEnrollmentController(CourseEnrollmentService enrollmentService) {
+        this.enrollmentService = enrollmentService;
+    }
 
     @PostMapping
     public CourseEnrollment createEnrollment(@RequestBody CourseEnrollment enrollment) {
@@ -26,7 +29,7 @@ public class CourseEnrollmentController {
     }
 
     @GetMapping("/student/{studentId}")
-    public List<CourseEnrollment> getEnrollmentsByStudentId(@PathVariable Long studentId) {
+    public List<CourseEnrollment> getEnrollmentsByStudentId(@PathVariable String studentId) {
         return enrollmentService.getEnrollmentsByStudentId(studentId);
     }
 

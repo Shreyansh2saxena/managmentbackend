@@ -57,7 +57,7 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Optional<Student> getStudentById(Long id) {
+    public Optional<Object> getStudentById(String id) {
         return studentRepository.findById(id);
     }
 
@@ -71,7 +71,7 @@ public class StudentService {
         }).orElseThrow(() -> new RuntimeException("Student not found with id " + id));
     }
 
-    public void deleteStudent(Long id) {
+    public void deleteStudent(String id) {
         studentRepository.deleteById(id);
     }
 
@@ -91,8 +91,8 @@ public class StudentService {
         }
     }
 
-    public StudentFullInfoDTO getStudentFullInfo(Long studentId) {
-        Student student = studentRepository.findById(studentId)
+    public StudentFullInfoDTO getStudentFullInfo(String studentId) {
+        Student student = (Student) studentRepository.findById(studentId)
                 .orElseThrow(() -> new RuntimeException("Student not found"));
 
         List<CourseEnrollment> enrollments = courseEnrollmentRepository.findByStudentId(studentId);

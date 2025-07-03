@@ -29,12 +29,12 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable Long id) {
-        return service.getStudentById(id).orElse(null);
+    public Student getStudentById(@PathVariable String id) {
+        return (Student) service.getStudentById(id).orElse(null);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable Long id) {
+    public void deleteStudent(@PathVariable String id) {
         service.deleteStudent(id);
     }
 
@@ -44,7 +44,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}/full-info")
-    public StudentFullInfoDTO getStudentFullInfo(@PathVariable Long id) {
+    public StudentFullInfoDTO getStudentFullInfo(@PathVariable String id) {
         return service.getStudentFullInfo(id);
     }
 
